@@ -6,13 +6,13 @@
 }
 
 body {
-    background: #222;
+    background: #1a1a1a;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centering the content horizontally */
-    justify-content: center; /* Centering the content vertically */
+    align-items: center; 
+    justify-content: center; 
     height: 100vh;
-    text-align: center; /* Centering text */
+    text-align: center; 
 }
 
 .title {
@@ -20,18 +20,19 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* Adds some space between the title and the card */
+    margin-bottom: 20px; 
 }
 
 .title h1 {
     font-size: 26px;
-    color: white;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .card {
     width: 90%;
     max-width: 500px;
-    background: linear-gradient(145deg, #ff6fd8, #3813c2);
+    background: linear-gradient(145deg, #ff7eb3, #7a2ccf);
     color: #fff;
     margin-top: 20px;
     border-radius: 20px;
@@ -40,37 +41,54 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease, transform 0.3s ease;
 }
 
-/* Styling for the Search Box */
+.card:hover {
+    transform: translateY(-5px);
+}
+
 .search {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .search input {
     border: 0;
     outline: 0;
-    background: #ebfffc;
-    color: #555;
-    padding: 10px 20px;
+    background: #f0fdfd;
+    color: #333;
+    padding: 12px 20px;
     height: 50px;
     border-radius: 30px;
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
+    transition: box-shadow 0.3s ease;
+}
+
+.search input:focus {
+    box-shadow: 0 0 8px rgba(122, 44, 207, 0.5);
 }
 
 .search button {
     border: 0;
     outline: 0;
-    background: #ebfffc;
+    background: #f0fdfd;
     border-radius: 50%;
     width: 60px;
     height: 60px;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .search button img {
@@ -79,13 +97,14 @@ body {
 
 .weather-icon {
     width: 100px;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .weather h1 {
     font-size: 50px;
     font-weight: 500;
     margin-top: 15px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
 .weather h2 {
@@ -94,37 +113,55 @@ body {
     margin-top: 10px;
 }
 
+.weather .description {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.weather h1, .weather h2, .weather-icon {
+    transition: all 0.5s ease;
+}
+
 .details {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    margin-top: 50px;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .col {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
+    text-align: center;
+    flex: 1;
 }
 
 .col img {
     width: 40px;
-    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
-.humidity,
-.wind {
-    font-size: 28px;
-    margin-top: -5px;
+.details .col span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
 }
 
-/* Media Queries for Tablet and Mobile Responsiveness */
+.details .col p {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 3px;
+}
 
 /* Tablet (768px and below) */
 @media (max-width: 768px) {
     body {
-        height: auto; /* Allow height to be flexible */
+        height: auto;
         padding: 10px;
     }
 
@@ -173,7 +210,7 @@ body {
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
     body {
-        height: 100vh; /* Ensures that body takes full viewport height */
+        height: 100vh; 
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -182,7 +219,7 @@ body {
     }
 
     .title {
-        margin-bottom: 20px; /* Adds space between the title and the card */
+        margin-bottom: 20px; 
     }
 
     .title h1 {
