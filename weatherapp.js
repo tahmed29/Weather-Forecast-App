@@ -11,6 +11,7 @@ var windElement = document.querySelector('.wind');
 var feelsLikeElement = document.querySelector('.feelslike');
 var visibilityElement = document.querySelector('.visibility');
 var weatherDetails = document.querySelector('.weather-details'); 
+var body = document.body;
 
 weatherDetails.style.display = 'none';
 
@@ -49,6 +50,21 @@ async function checkWeather(city) {
         } else if (data.weather[0].main === 'Snow') {
             weatherIcon.src = 'assets/img/snow-alt-1-svgrepo-com.svg';
         }
+
+        try {
+            const imgResponse = await fetch(
+                `https://api.unsplash.com/photos/random?query=${city}&orientation=landscape&client_id=${UNSPLASH_ACCESS_KEY}`
+            );
+            const imgData = await imgResponse.json();
+
+            if (imgData.urls && imgData.urls.full) {
+                body.style.background = `url(${imgData.urls.full}) no-repeat center center fixed`;
+                body.style.backgroundSize = 'cover';
+            }
+        } catch (err) {
+            console.error("Unsplash error:", err);
+        }
+
     } else {
         weatherDetails.style.display = 'none';
         alert("City not found!");
